@@ -66,7 +66,7 @@ export const ContentContainer = styled.section`
         }
         :hover {
           cursor: pointer;
-          background: coral;
+          background: #0d3a6c;
           color: white;
         }
       }
