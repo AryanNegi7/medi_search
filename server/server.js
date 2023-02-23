@@ -22,22 +22,30 @@ db.then(()=>{
         await issue.save();
         res.send(issue);
     })
-    app.get('/issue',async(req,res)=>{
-        // console.log("heyyyy");
+    app.get('/issues',async(req,res)=>{
+        console.log("Check1");
         const issue=await Issue.find();
         res.send(issue);
     })
+    // app.get('/issue/:id',async(req,res)=>{
+    //     const issue=await Issue.findOne({id: req.params.id});
+    //     res.send(issue);
+    // })
     app.get('/issue/:id',async(req,res)=>{
-        const issue=await Issue.findOne({id: req.params.id});
-        res.send(issue);
-    })
-    app.get('issue/:id',async(req,res)=>{
         const st=req.params.id;
-        const str=`/^${st}/i`;
-        console.log(str);
-        const issue=await Issue.find({ Name: { $regex: new RegExp(st, 'i') } });
-        console.log(issue);
-        res.send(issue);
+        if(!isNaN(st))
+        {
+            const issue=await Issue.findOne({id: req.params.id});
+            res.send(issue);
+        }
+        else
+        {
+            const str=`/^${st}/i`;
+            console.log(str);
+            const issue=await Issue.find({ Name: { $regex: new RegExp(st, 'i') } });
+            console.log(issue);
+            res.send(issue);
+        }
     })
     app.listen(PORT,()=>{
         console.log(`server running at http://localhost:${PORT}/`);
