@@ -27,10 +27,6 @@ db.then(()=>{
         const issue=await Issue.find();
         res.send(issue);
     })
-    // app.get('/issue/:id',async(req,res)=>{
-    //     const issue=await Issue.findOne({id: req.params.id});
-    //     res.send(issue);
-    // })
     
     app.get('/issue/:id',async(req,res)=>{
         const st=req.params.id;
