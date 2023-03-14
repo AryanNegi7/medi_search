@@ -9,10 +9,6 @@ function Search({ data, search, setSearch, setSubmitted, submitted }) {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    // if (search.length !== 0) {
-    //   setSubmitted(true);
-    // }
-
   };
 
   const handleKeyDown=(e)=>{
